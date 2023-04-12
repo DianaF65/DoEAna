@@ -1,5 +1,7 @@
-parse_design_to_rmat <- function(d, n = 10, k = 2){
-  t1 <- d
+parse_design_to_rmat <- function(design_row){
+  n <- design_row$n
+  k <- design_row$k
+  t1 <- design_row$design
   nc <- nchar(t1)
   t1 <- substr(t1, start = 2, stop = nc-1)
   ot <- strsplit(t1, split = c(";"))[[1]]
