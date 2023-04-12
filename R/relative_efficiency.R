@@ -1,22 +1,37 @@
-relative_efficiency <- function(m_df, e_df, c_df) {
-  if (m_df$distance != "manhattan") {
-    stop(paste0("Distance for m_df should be 'manhattan', not ", m_df$distance))
+#' Relative Efficiency
+#'
+#' This function takes in the different generated distances
+#' and selects specific traits from each type.  With the
+#' selected values, relative efficiency is done for each
+#' distance on each score "(M(x), E(x), C(x)).  The output
+#' will be a table with all efficiencies.
+#'
+#' @param m_row Generated with mahattan distance
+#' @param e_row Generated with euclidean distance
+#' @param c_row Generated with chebyshev distance
+#'
+#' @return A 3x3 data frame efficiency table
+#' @export
+#'
+relative_efficiency <- function(m_row, e_row, c_row) {
+  if (m_row$distance != "manhattan") {
+    stop(paste0("Distance for m_df should be 'manhattan', not ", m_row$distance))
   }
-  if (e_df$distance != "euclidean") {
-    stop(paste0("Distance for m_df should be 'euclidean', not ", e_df$distance))
+  if (e_row$distance != "euclidean") {
+    stop(paste0("Distance for e_df should be 'euclidean', not ", e_row$distance))
   }
-  if (c_df$distance != "euclidean") {
-    stop(paste0("Distance for m_df should be 'chebyshev', not ", c_df$distance))
+  if (c_row$distance != "euclidean") {
+    stop(paste0("Distance for c_df should be 'chebyshev', not ", c_row$distance))
   }
 
-  m_best <- parse_design_to_rmat(m_df)
-  e_best <- parse_design_to_rmat(e_df)
-  c_best <- parse_design_to_rmat(c_df)
+  m_best <- parse_design_to_rmat(m_row)
+  e_best <- parse_design_to_rmat(e_row)
+  c_best <- parse_design_to_rmat(c_row)
   all_candidates <- c(m_best, e_best, c_best)
 
-  m_score <- m_df$score
-  e_score <- e_df$score
-  c_score <- c_df$score
+  m_score <- m_row$score
+  e_score <- e_row$score
+  c_score <- c_row$score
   all_scores <- c(m_score, e_score, c_score)
 
   all_eff <- matrix(NA, nrow = 3, ncol = 3)
