@@ -1,3 +1,6 @@
 ^DoEAna\.Rproj$
 ^\.Rproj\.user$
+^scripts$
+^data-raw$
+^all_csv_data$
 ^data-raw$
