@@ -2,8 +2,7 @@
 # eDist function
 eDist <- function(A, B) {
   sumDist = 0.0
-  dim = nrow(A)
-  for (i in 1:dim) {
+  for (i in seq_len(length(A))) {
     sumDist <- sumDist + (A[i] - B[i]) ^ 2
   }
   dist <- sqrt(sumDist)
@@ -13,8 +12,7 @@ eDist <- function(A, B) {
 # lpNorm function
 lpNorm <- function(A, B, p = 2) {
   sumDist <- 0.0
-  dim = nrow(A)
-  for (i in 1:dim) {
+  for (i in seq_len(length(A))) {
     sumDist <- sumDist + (A[i] - B[i]) ^ p
   }
   dist <- sumDist ^ (1 / p)
