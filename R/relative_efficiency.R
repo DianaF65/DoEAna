@@ -1,55 +1,52 @@
-relative_efficiency <- function(designs, distances){
-  #make rel_eff_table (gives table of relative efficiency)
+#' Relative Efficiency
+#'
+#' This function takes in the different generated distances
+#' and selects specific traits from each type.  With the
+#' selected values, relative efficiency is done for each
+#' distance on each score "(M(x), E(x), C(x)).  The output
+#' will be a table with all efficiencies.
+#'
+#' @param m_row Generated with mahattan distance
+#' @param e_row Generated with euclidean distance
+#' @param c_row Generated with chebyshev distance
+#'
+#' @return A 3x3 data frame efficiency table
+#' @export
+#'
+relative_efficiency <- function(m_row, e_row, c_row) {
+  if (m_row$distance != "manhattan") {
+    stop(paste0("Distance for m_df should be 'manhattan', not ", m_row$distance))
+  }
+  if (e_row$distance != "euclidean") {
+    stop(paste0("Distance for e_df should be 'euclidean', not ", e_row$distance))
+  }
+  if (c_row$distance != "euclidean") {
+    stop(paste0("Distance for c_df should be 'chebyshev', not ", c_row$distance))
+  }
 
+  m_best <- parse_design_to_rmat(m_row)
+  e_best <- parse_design_to_rmat(e_row)
+  c_best <- parse_design_to_rmat(c_row)
+  all_candidates <- c(m_best, e_best, c_best)
 
+  m_score <- m_row$score
+  e_score <- e_row$score
+  c_score <- c_row$score
+  all_scores <- c(m_score, e_score, c_score)
+
+  all_eff <- matrix(NA, nrow = 3, ncol = 3)
+  metrics <- c(manhattan_dist, euclidean_dist, chebyshev_dist)
+  for (i in seq_len(3)) {
+    for (j in seq_len(3)) {
+      eval_metrix <- metrics[i]
+      to_eval <- all_candidates[j]
+      top_eval <- min_Dist(to_eval, eval_metrix)
+      rel_eff <- (top_eval / all_scores[i]) * 100
+      all_eff[i, j] <- rel_eff
+    }
+  }
+  df <- data.frame(all_eff)
+  colnames(df) <- c(":M", ":E", ":C")
+  rownames(df) <- c("M(x)", "E(x)", "C(x)")
+  return(df)
 }
-
-# old Julia code
-# function relEff(m_df, e_df, c_df; metrics = [manhattan_minDist, euclidean_minDist, chebyshev_minDist])
-# num_candidates = 3
-# all_eff = zeros(num_candidates, num_candidates)
-#
-# m_best = parseToMatrix(m_df[1,5])
-# e_best = parseToMatrix(e_df[1,5])
-# c_best = parseToMatrix(c_df[1,5])
-# all_candidates = [m_best, e_best, c_best]
-#
-# m_score = m_df[1,4]
-# e_score = e_df[1,4]
-# c_score = c_df[1,4]
-# all_scores = [m_score, e_score, c_score]
-#
-# for i in 1:num_candidates
-# for j in 1:num_candidates
-# eval_metric = metrics[i]
-# to_eval = all_candidates[j]
-# top_eval = eval_metric(to_eval)
-# rel_eff = (top_eval / all_scores[i])* 100
-# all_eff[i, j] = rel_eff
-# end
-# end
-# return all_eff
-# end
-#
-
-
-# function matrixToDf(matrix)
-# dataFrame = DataFrame(matrix,:auto)
-# dataFrame = rename!(dataFrame,:x1 => :M, :x2 => :E, :x3 => :C)
-# label = ["M(x)", "E(x)", "C(x)"]
-# dataFrame.label = label
-# dataFrame = dataFrame[!, [4, 1, 2, 3]]
-# return dataFrame
-# end
-
-# example of running Julia fxn
-
-#------- comparing n = 10
-# m_n10_df = DataFrame(CSV.File("Results/0.1_k2n10manhattan.csv"))
-# e_n10_df = DataFrame(CSV.File("Results/0.1_k2n10euclid.csv"))
-# c_n10_df = DataFrame(CSV.File("Results/0.1_k2n10chebyshev.csv"))
-#
-# n10re = relEff(m_n10_df, e_n10_df, c_n10_df)
-# n10re_df = matrixToDf(n10re)
-# CSV.write("Results/0.1_k2n10releff.csv", n10re_df)
-

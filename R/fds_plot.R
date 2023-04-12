@@ -141,3 +141,24 @@ fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
 #
 # fds_plot(spvd_k2, Main = "FDS Plot: K = 2, I vs G - opt Design, 2nd-Order")
 # legend("topleft", lwd = 2, legend = c("I - opt Design", "G - opt Design"), col = c("blue", "red"))
+
+
+# ## utilities for generating design and model matrices
+# function genRandDesign_mix(N, K)
+# # N:= number of points in design (nrows)
+# # K:= number of factors (ncols)
+# # generate from uniform dirichlet
+# alpha = ones(K)
+# d     = Dirichlet(alpha)
+# X     = transpose(rand(d, N))
+# # make sure smallest is bigger than 0
+# smallest = eps()
+# for i in 1:N
+# xt = X[i, :]
+# xt[xt .< smallest] .= smallest
+# xt = xt/sum(xt)
+# X[i, :] = xt
+# end
+#
+# return X
+# end
