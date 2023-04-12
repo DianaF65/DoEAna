@@ -1,5 +1,3 @@
-# -design_select (grabs the design row with geometry, distance, and n)
-
 #' Select Design Function
 #'
 #' @param geometry Geometry of the design space, either 'simplex' or
