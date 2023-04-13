@@ -26,11 +26,8 @@ make_random_grid <- function(dim = 1){
 #' purposes in makePredVec.
 #'
 #' @param X a vector or matrix object that represents an experiment design
-<<<<<<< HEAD
 #' @return a single vector
-=======
 #' @return something
->>>>>>> 4ff98cdc775ad2160bbf9dd4e7e634cb4aefc73a
 makeModelVec <- function(X){
   X <- matrix(X)
   K <- ncol(X)
@@ -51,14 +48,11 @@ makeModelVec <- function(X){
 #' model matrix. The function creates a second order model which includes main
 #' effects, interaction, and squared terms.
 #'
-<<<<<<< HEAD
 #'
 #' @param X an experiment design in the form of a matrix.
 #' @return a model matrix of the input design.
-=======
 #' @param X yep
 #' @return something
->>>>>>> 4ff98cdc775ad2160bbf9dd4e7e634cb4aefc73a
 makeModelMat <- function(X) {
   X <- as.matrix(X)
   N <- nrow(X)
