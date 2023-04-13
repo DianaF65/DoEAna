@@ -19,7 +19,7 @@ relative_efficiency <- function(m_row, e_row, c_row) {
   if (e_row$distance != "euclidean") {
     stop(paste0("Distance for e_df should be 'euclidean', not ", e_row$distance))
   }
-  if (c_row$distance != "euclidean") {
+  if (c_row$distance != "chebyshev") {
     stop(paste0("Distance for c_df should be 'chebyshev', not ", c_row$distance))
   }
 
