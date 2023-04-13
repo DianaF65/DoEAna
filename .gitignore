@@ -4,3 +4,4 @@
 .httr-oauth
 .DS_Store
 all_csv_data
+inst/doc
