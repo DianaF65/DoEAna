@@ -27,7 +27,7 @@ make_random_grid <- function(dim = 1){
 #' makeModelVec generates a single vector of the design matrix
 #'
 #' @param X a vector or matrix object that represents an experiment design
-#' @return
+#' @return something
 makeModelVec <- function(X){
   X <- matrix(X)
   K <- ncol(X)
@@ -46,8 +46,8 @@ makeModelVec <- function(X){
 
 #' Title
 #'
-#' @param X
-#' @return
+#' @param X yep
+#' @return something
 makeModelMat <- function(X) {
   X <- as.matrix(X)### WARNING: ONLY WORKS FOR k = 1, k = 2
   N <- nrow(X)
@@ -93,8 +93,6 @@ makePredVec <- function(X){
 #'
 #' @return an FDS plot
 #' @export
-#'
-#' @examples
 fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
   design1 <- parse_design_to_rmat(design1)
   design2 <- parse_design_to_rmat(design2)

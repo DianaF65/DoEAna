@@ -12,7 +12,6 @@
 #'
 #' @return A 3x3 data frame efficiency table
 #' @export
-#'
 relative_efficiency <- function(m_row, e_row, c_row) {
   if (m_row$distance != "manhattan") {
     stop(paste0("Distance for m_df should be 'manhattan', not ", m_row$distance))
