@@ -1,9 +1,3 @@
-fds_plot <- function(designs){
-  # (you input diff designs and it gives the resulting fds plot)
-}
-
-
-# # function to make FDS vec
 # only works for hypercube, need one for simplex
 
 #' make_random_grid generates random designs
@@ -23,11 +17,11 @@ make_random_grid <- function(dim = 1){
   return(ran_grid)
 }
 
-# need to be extended to k = 3
-#' makeModelVec generates a single vector of the design matrix
+#' makeModelVec generates a single vector of the design matrix for computation
+#' purposes in makePredVec.
 #'
 #' @param X a vector or matrix object that represents an experiment design
-#' @return
+#' @return a single vector
 makeModelVec <- function(X){
   X <- matrix(X)
   K <- ncol(X)
@@ -44,10 +38,13 @@ makeModelVec <- function(X){
 }
 
 
-#' Title
+#' makeModelMat takes an experiment's design matrix and extends it into the
+#' model matrix. The function creates a second order model which includes main
+#' effects, interaction, and squared terms.
 #'
-#' @param X
-#' @return
+#'
+#' @param X an experiment design in the form of a matrix.
+#' @return a model matrix of the input design.
 makeModelMat <- function(X) {
   X <- as.matrix(X)### WARNING: ONLY WORKS FOR k = 1, k = 2
   N <- nrow(X)
@@ -66,10 +63,10 @@ makeModelMat <- function(X) {
 }
 
 #' makePredVec creates a list of prediction variances of randomized designs for
-#' the FDS plot
+#' the fds_plot function.
 #'
-#' @param X candidate design being compared
-#' @return a list of ordered prediction variance of the randomized designs
+#' @param X candidate design being compared.
+#' @return a list of ordered prediction variance of the randomized designs.
 makePredVec <- function(X){
   M <- makeModelMat(X)
   F_prime_F_inv <- solve(t(M)%*%M)
@@ -83,15 +80,19 @@ makePredVec <- function(X){
 }
 
 
-#' Title
+#' fds_plot takes two experiment designs and creates a Fraction of Design Space
+#' visualization that compares relative prediction variance across the design
+#' space. A lower prediction variance is considered a a desirable quality in an
+#' experiment.
 #'
-#' @param design an experimental design
-#' @param Ylim ignore
+#' @param design1 an experimental design for comparison.
+#' @param design2 an experimental design for comparison.
+#' @param Ylim ignore.
 #' @param colV a vector of strings containing a number of colors equal to the
-#' number of designs being plotted
-#' @param Main a string containing the desired title for the FDS plot
+#' number of designs being plotted.
+#' @param Main a string containing the desired title for the FDS plot.
 #'
-#' @return an FDS plot
+#' @return an FDS plot.
 #' @export
 #'
 #' @examples
