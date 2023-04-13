@@ -14,6 +14,11 @@ make_random_grid <- function(dim = 1){
     x2 <- runif(N, min = -1, max = 1)
     ran_grid   <- cbind(x1, x2)
   }
+  if (dim == 3){
+    x2 <- runif(N, min = -1, max = 1)
+    x3 <- runif(N, min = -1, max = 1)
+    ran_grid <- cbind(x1, x2, x3)
+  }
   return(ran_grid)
 }
 
@@ -21,7 +26,11 @@ make_random_grid <- function(dim = 1){
 #' purposes in makePredVec.
 #'
 #' @param X a vector or matrix object that represents an experiment design
+<<<<<<< HEAD
 #' @return a single vector
+=======
+#' @return something
+>>>>>>> 4ff98cdc775ad2160bbf9dd4e7e634cb4aefc73a
 makeModelVec <- function(X){
   X <- matrix(X)
   K <- ncol(X)
@@ -42,11 +51,16 @@ makeModelVec <- function(X){
 #' model matrix. The function creates a second order model which includes main
 #' effects, interaction, and squared terms.
 #'
+<<<<<<< HEAD
 #'
 #' @param X an experiment design in the form of a matrix.
 #' @return a model matrix of the input design.
+=======
+#' @param X yep
+#' @return something
+>>>>>>> 4ff98cdc775ad2160bbf9dd4e7e634cb4aefc73a
 makeModelMat <- function(X) {
-  X <- as.matrix(X)### WARNING: ONLY WORKS FOR k = 1, k = 2
+  X <- as.matrix(X)
   N <- nrow(X)
   K <- ncol(X)
   if (K == 1) {
@@ -94,14 +108,13 @@ makePredVec <- function(X){
 #'
 #' @return an FDS plot.
 #' @export
-#'
-#' @examples
 fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
-  design1 <- parse_design_to_rmat(design1)
-  design2 <- parse_design_to_rmat(design2)
-  pred1 <- makePredVec(design1)
-  pred2 <- makePredVec(design2)
+  design1_mat <- parse_design_to_rmat(design1)
+  design2_mat <- parse_design_to_rmat(design2)
+  pred1 <- makePredVec(design1_mat)
+  pred2 <- makePredVec(design2_mat)
   design <- rbind(pred1, pred2)
+  colv <- c("blue", "red", "purple", "orange", "darkgreen")
   par(tck = -0.01,
       mai = c(0.5, 0.5, 0.3, 0.3))
   if(is.null(Ylim)) Ylim <- range(design)
@@ -118,30 +131,11 @@ fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
   axis(2, tck = -0.01, mgp = c(3, 0.25, 0), cex.axis= 1)
   mtext("Fraction of Design Space", side = 1, line = 1, cex = 1)
   mtext("Relative Prediction Variance", side = 2, line = 1.5, cex = 1)
-  legend('topleft', inset = 0.1, paste0(
-    design1$distance, " distance, N = ", design1$n,
-    design2$distance, " distance, N = ", design2$n), lty = 1, col = colV,
+  legend('topleft', inset = 0.1, legend = c(paste0(
+    design1$distance, " distance, N = ", design1$n), paste0(
+    design2$distance, " distance, N = ", design2$n)), lty = 1, col = colV,
     cex = 0.65)
 }
-#
-# pv_i_k1  <- makePredVec(best_design_3_k1)
-# pv_g_k1 <- makePredVec(best_design_4_k1)
-# pv_i_k2  <- makePredVec(best_design_3_k2)
-# pv_g_k2 <- makePredVec(best_design_4_k2)
-#
-#
-# colv <- c("blue", "red", "purple", "orange", "darkgreen")
-#
-# spvd_k1 <- rbind(pv_i_k1, pv_g_k1)
-# spvd_k2 <- rbind(pv_i_k2, pv_g_k2)
-# spvd_all <- rbind(pv_i_k1, pv_g_k1, pv_i_k2, pv_g_k2)
-#
-#
-# fds_plot(spvd_k1, Main = "FDS Plot: K = 1, I vs G - opt Design, 2nd-Order")
-# legend("topleft", lwd = 2, legend = c("I - opt Design", "G - opt Design"), col = c("blue", "red"))
-#
-# fds_plot(spvd_k2, Main = "FDS Plot: K = 2, I vs G - opt Design, 2nd-Order")
-# legend("topleft", lwd = 2, legend = c("I - opt Design", "G - opt Design"), col = c("blue", "red"))
 
 
 # ## utilities for generating design and model matrices

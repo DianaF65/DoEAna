@@ -12,7 +12,6 @@
 #'
 #' @return A 3x3 data frame efficiency table
 #' @export
-#'
 relative_efficiency <- function(m_row, e_row, c_row) {
   if (m_row$distance != "manhattan") {
     stop(paste0("Distance for m_df should be 'manhattan', not ", m_row$distance))
@@ -20,7 +19,7 @@ relative_efficiency <- function(m_row, e_row, c_row) {
   if (e_row$distance != "euclidean") {
     stop(paste0("Distance for e_df should be 'euclidean', not ", e_row$distance))
   }
-  if (c_row$distance != "euclidean") {
+  if (c_row$distance != "chebyshev") {
     stop(paste0("Distance for c_df should be 'chebyshev', not ", c_row$distance))
   }
 
