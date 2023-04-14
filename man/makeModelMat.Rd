@@ -15,7 +15,10 @@ a model matrix of the input design.
 =======
 
 model matrix
+<<<<<<< HEAD
+=======
 >>>>>>> 4d5c53ca46c126fca364d0e3b3a36d37ef8e1e87
+>>>>>>> 7e86d0774ae0b7a78d6fe1737b084a2eecf629ff
 }
 \description{
 makeModelMat takes an experiment's design matrix and extends it into the
