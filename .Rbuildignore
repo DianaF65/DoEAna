@@ -4,4 +4,8 @@
 ^data-raw$
 ^all_csv_data$
 ^data-raw$
+<<<<<<< HEAD
 ^README\.Rmd$
+=======
+^LICENSE\.md$
+>>>>>>> 7e86d0774ae0b7a78d6fe1737b084a2eecf629ff

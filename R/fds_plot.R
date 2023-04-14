@@ -20,6 +20,8 @@ make_random_grid <- function(dim = 1){
   return(ran_grid)
 }
 
+#' MakeModelVec Function
+#'
 #' makeModelVec generates a single vector of the design matrix for computation
 #' purposes in makePredVec.
 #'
@@ -40,15 +42,15 @@ makeModelVec <- function(X){
   return(matrix(M))
 }
 
-
+#' MakeModelMat Function
+#'
 #' makeModelMat takes an experiment's design matrix and extends it into the
 #' model matrix. The function creates a second order model which includes main
 #' effects, interaction, and squared terms.
 #'
 #' @param X an experiment design in the form of a matrix.
+#'
 #' @return a model matrix of the input design.
-#' @param X yep
-#' @return model matrix
 makeModelMat <- function(X) {
   X <- as.matrix(X)
   N <- nrow(X)
@@ -66,6 +68,8 @@ makeModelMat <- function(X) {
   return(M)
 }
 
+#' makePredVec Function
+#'
 #' makePredVec creates a list of prediction variances of randomized designs for
 #' the fds_plot function.
 #'
