@@ -1,5 +1,3 @@
-# only works for hypercube, need one for simplex
-
 #' make_random_grid generates random designs
 #'
 #' @param dim the dimension of the grid. Accepts only values of 1 or 2.
@@ -27,7 +25,6 @@ make_random_grid <- function(dim = 1){
 #'
 #' @param X a vector or matrix object that represents an experiment design
 #' @return a single vector
-#' @return something
 makeModelVec <- function(X){
   X <- matrix(X)
   K <- ncol(X)
@@ -48,11 +45,10 @@ makeModelVec <- function(X){
 #' model matrix. The function creates a second order model which includes main
 #' effects, interaction, and squared terms.
 #'
-#'
 #' @param X an experiment design in the form of a matrix.
 #' @return a model matrix of the input design.
 #' @param X yep
-#' @return something
+#' @return model matrix
 makeModelMat <- function(X) {
   X <- as.matrix(X)
   N <- nrow(X)
@@ -88,6 +84,8 @@ makePredVec <- function(X){
 }
 
 
+#' FDS Plot
+#'
 #' fds_plot takes two experiment designs and creates a Fraction of Design Space
 #' visualization that compares relative prediction variance across the design
 #' space. A lower prediction variance is considered a a desirable quality in an
@@ -103,6 +101,11 @@ makePredVec <- function(X){
 #' @return an FDS plot.
 #' @export
 fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
+  if (design1$geometry == "simplex" | design2$geometry == "simplex"){
+    stop("Sorry, becuase the models for the simplex are very complex, the
+         FDS plot for the simplex is currently not supported and is an
+         area of future research.")
+  }
   design1_mat <- parse_design_to_rmat(design1)
   design2_mat <- parse_design_to_rmat(design2)
   pred1 <- makePredVec(design1_mat)
@@ -127,27 +130,6 @@ fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
   mtext("Relative Prediction Variance", side = 2, line = 1.5, cex = 1)
   legend('topleft', inset = 0.1, legend = c(paste0(
     design1$distance, " distance, N = ", design1$n), paste0(
-    design2$distance, " distance, N = ", design2$n)), lty = 1, col = colV,
+      design2$distance, " distance, N = ", design2$n)), lty = 1, col = colV,
     cex = 0.65)
 }
-
-
-# ## utilities for generating design and model matrices
-# function genRandDesign_mix(N, K)
-# # N:= number of points in design (nrows)
-# # K:= number of factors (ncols)
-# # generate from uniform dirichlet
-# alpha = ones(K)
-# d     = Dirichlet(alpha)
-# X     = transpose(rand(d, N))
-# # make sure smallest is bigger than 0
-# smallest = eps()
-# for i in 1:N
-# xt = X[i, :]
-# xt[xt .< smallest] .= smallest
-# xt = xt/sum(xt)
-# X[i, :] = xt
-# end
-#
-# return X
-# end

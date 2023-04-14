@@ -1,10 +1,14 @@
-# This function takes a design and outputs a matrix.
-
-
+#' print_design
+#'
+#' @param design_row a row in the DoEAna data set
+#'
+#' @return a matrix of the design.
+#' @export
 print_design <- function(design_row){
   parse_design_to_rmat(design_row)
 }
 
+# This function takes a design and outputs a matrix.
 parse_design_to_rmat <- function(design_row){
   n <- design_row$n
   k <- design_row$k
