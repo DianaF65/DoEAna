@@ -1,3 +1,10 @@
+# This function takes a design and outputs a matrix.
+
+
+print_design <- function(design_row){
+  parse_design_to_rmat(design_row)
+}
+
 parse_design_to_rmat <- function(design_row){
   n <- design_row$n
   k <- design_row$k
