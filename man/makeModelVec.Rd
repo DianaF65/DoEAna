@@ -2,7 +2,8 @@
 % Please edit documentation in R/fds_plot.R
 \name{makeModelVec}
 \alias{makeModelVec}
-\title{makeModelVec generates a single vector of the design matrix}
+\title{makeModelVec generates a single vector of the design matrix for computation
+purposes in makePredVec.}
 \usage{
 makeModelVec(X)
 }
@@ -10,8 +11,11 @@ makeModelVec(X)
 \item{X}{a vector or matrix object that represents an experiment design}
 }
 \value{
+a single vector
+
 something
 }
 \description{
-makeModelVec generates a single vector of the design matrix
+makeModelVec generates a single vector of the design matrix for computation
+purposes in makePredVec.
 }

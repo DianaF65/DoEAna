@@ -3,17 +3,17 @@
 \name{makePredVec}
 \alias{makePredVec}
 \title{makePredVec creates a list of prediction variances of randomized designs for
-the FDS plot}
+the fds_plot function.}
 \usage{
 makePredVec(X)
 }
 \arguments{
-\item{X}{candidate design being compared}
+\item{X}{candidate design being compared.}
 }
 \value{
-a list of ordered prediction variance of the randomized designs
+a list of ordered prediction variance of the randomized designs.
 }
 \description{
 makePredVec creates a list of prediction variances of randomized designs for
-the FDS plot
+the fds_plot function.
 }

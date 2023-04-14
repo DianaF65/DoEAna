@@ -2,23 +2,31 @@
 % Please edit documentation in R/fds_plot.R
 \name{fds_plot}
 \alias{fds_plot}
-\title{Title}
+\title{fds_plot takes two experiment designs and creates a Fraction of Design Space
+visualization that compares relative prediction variance across the design
+space. A lower prediction variance is considered a a desirable quality in an
+experiment.}
 \usage{
 fds_plot(design1, design2, Ylim = NULL, colV = colv, Main = "")
 }
 \arguments{
-\item{Ylim}{ignore}
+\item{design1}{an experimental design for comparison.}
+
+\item{design2}{an experimental design for comparison.}
+
+\item{Ylim}{ignore.}
 
 \item{colV}{a vector of strings containing a number of colors equal to the
-number of designs being plotted}
+number of designs being plotted.}
 
-\item{Main}{a string containing the desired title for the FDS plot}
-
-\item{design}{an experimental design}
+\item{Main}{a string containing the desired title for the FDS plot.}
 }
 \value{
-an FDS plot
+an FDS plot.
 }
 \description{
-Title
+fds_plot takes two experiment designs and creates a Fraction of Design Space
+visualization that compares relative prediction variance across the design
+space. A lower prediction variance is considered a a desirable quality in an
+experiment.
 }
