@@ -1,12 +1,13 @@
 Package: DoEAna
 Title: Design of Experiments Analysis 
 Version: 0.0.0.9000
-Authors@R: 
-    person("Rebekah", "Scott", , "rebekah.scott@usu.edu", role = c("aut", "cre")))
-    person("Ryan", "Bushman", , "ryan.bushman@usu.edu", role = c("aut"),
-           comment = c(ORCID = "orcid.org/0000-0001-9278-2000"))
-    person("Diana", "Felipe", , "diana.felipe@usu.edu", role = c("aut"))
-    person("Asher", "Hanson", , "a02213550@usu.edu", role = c("aut"))
+Authors@R: c(
+    person("Rebekah", "Scott", , "rebekah.scott@usu.edu", role = c("aut", "cre")),
+    person("Ryan", "Bushman", role = "aut",
+           comment = c(ORCID = "0000-0001-9278-2000")),
+    person("Diana", "Felipe", role = "aut"),
+    person("Asher", "Hanson", role = "aut")
+  )
 Description: Aids in the comparison of maxmin space-filling designs generated
     using particle swarm optimization in Julia. Comparison tools include printing
     the design matrix, plotting the design, relative efficiency tables, and a 

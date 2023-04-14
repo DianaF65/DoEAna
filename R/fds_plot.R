@@ -4,17 +4,17 @@
 #' @return a randomized design with user specified number of parameters.
 make_random_grid <- function(dim = 1) {
   N <- 10000
-  x1 <- runif(N, min = -1, max = 1)
+  x1 <- stats::runif(N, min = -1, max = 1)
   if (dim == 1) {
     ran_grid <- matrix(x1)
   }
   if (dim == 2) {
-    x2 <- runif(N, min = -1, max = 1)
+    x2 <- stats::runif(N, min = -1, max = 1)
     ran_grid   <- cbind(x1, x2)
   }
   if (dim == 3) {
-    x2 <- runif(N, min = -1, max = 1)
-    x3 <- runif(N, min = -1, max = 1)
+    x2 <- stats::runif(N, min = -1, max = 1)
+    x3 <- stats::runif(N, min = -1, max = 1)
     ran_grid <- cbind(x1, x2, x3)
   }
   return(ran_grid)
@@ -35,7 +35,7 @@ makeModelVec <- function(X) {
   } else if (K == 2) {
     # use second order model so CEXCH goes for more than a few iterations
     M <- cbind(1, X, X[, 1] * X[, 2], X^2)
-  } else if (k == 3) {
+  } else if (K == 3) {
     M <- cbind(1, X, X[, 1] * X[, 2], X[, 1] * X[, 3], X[, 2] * X[, 3],
                X[, 1] * X[, 2] * X[, 3], X^2)
   }
@@ -116,23 +116,23 @@ fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = "") {
   pred2 <- makePredVec(design2_mat)
   design <- rbind(pred1, pred2)
   colv <- c("blue", "red", "purple", "orange", "darkgreen")
-  par(tck = -0.01,
+  graphics::par(tck = -0.01,
       mai = c(0.5, 0.5, 0.3, 0.3))
   if (is.null(Ylim)) Ylim <- range(design)
   x    <- seq(1, ncol(design), by = 1) / ncol(design)
-  plot(x = x, y = design[1, ], type = "l", col = colV[1], ylim = Ylim,
+  graphics::plot(x = x, y = design[1, ], type = "l", col = colV[1], ylim = Ylim,
        xlab = "", ylab = "", lwd = 2,
        axes = F, main = Main)
-  grid()
+  graphics::grid()
   for (i in 1:nrow(design)){
-    lines(x = x, y = design[i, ], type = "l", col = colV[i], lwd = 2)
+    graphics::lines(x = x, y = design[i, ], type = "l", col = colV[i], lwd = 2)
   }
-  box()
-  axis(1, tck = -0.01, mgp = c(3, .1, 0), cex.axis = 1)
-  axis(2, tck = -0.01, mgp = c(3, 0.25, 0), cex.axis = 1)
-  mtext("Fraction of Design Space", side = 1, line = 1, cex = 1)
-  mtext("Relative Prediction Variance", side = 2, line = 1.5, cex = 1)
-  legend("topleft, inset = 0.1, legend = c(paste0(
+  graphics::box()
+  graphics::axis(1, tck = -0.01, mgp = c(3, .1, 0), cex.axis = 1)
+  graphics::axis(2, tck = -0.01, mgp = c(3, 0.25, 0), cex.axis = 1)
+  graphics::mtext("Fraction of Design Space", side = 1, line = 1, cex = 1)
+  graphics::mtext("Relative Prediction Variance", side = 2, line = 1.5, cex = 1)
+  graphics::legend("topleft", inset = 0.1, legend = c(paste0(
     design1$distance, " distance, N = ", design1$n), paste0(
       design2$distance, " distance, N = ", design2$n)), lty = 1, col = colV,
     cex = 0.65)
