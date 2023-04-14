@@ -10,7 +10,15 @@
    print(plot)
 }
 
-# we can do this in baseR or with ggplot2
+
+#' Plot Hypercube Function
+#'
+#' This function plots the specified distances on a hypercube geometry.
+#'
+#' @param data_row A row of data.
+#'
+#' @return A plot of the hypercube.
+#' @export
 plot_hypercube <- function(data_row) {
   # ggplot2 example code
   design <- as.data.frame(parse_design_to_rmat(data_row))
@@ -25,8 +33,14 @@ plot_hypercube <- function(data_row) {
   return(plot)
 }
 
-
-# need ggplot2 and ggtern libraries
+#' Plot Simplex Function
+#'
+#' This function plots the specified distances on a simplex geometry
+#'
+#' @param data_row A row of data.
+#'
+#' @return A plot of the simplex.
+#' @export
 plot_simplex <- function(data_row) {
   design <- as.data.frame(parse_design_to_rmat(data_row))
   colnames(design) <- c("X1", "X2", "X3")
