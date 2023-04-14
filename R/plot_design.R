@@ -29,7 +29,9 @@
 plot_hypercube <- function(data_row) {
   # ggplot2 example code
   design <- as.data.frame(parse_design_to_rmat(data_row))
+  X1 <- X2 <- 0
   colnames(design) <- c("X1", "X2")
+
   plot <- ggplot2::ggplot(design, ggplot2::aes(x = X1, y = X2)) +
     ggplot2::geom_point(size = 2, color = "blue") +
     ggplot2::scale_y_continuous(limits = c(-1, 1)) +
@@ -53,6 +55,7 @@ plot_hypercube <- function(data_row) {
 #' @return A plot of the simplex.
 plot_simplex <- function(data_row) {
   design <- as.data.frame(parse_design_to_rmat(data_row))
+  X1 <- X2 <- X3 <- x1 <- x2 <- x2 <- x3 <- xend <- yend <- zend <- 0
   colnames(design) <- c("X1", "X2", "X3")
   lines <- data.frame(x1 = c(0.5, 0, 0.5),
                       x2 = c(0.5, 0.5, 0),

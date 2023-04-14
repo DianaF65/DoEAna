@@ -21,6 +21,7 @@ select_design <- function(geometry, distance, n) {
   if (!all(n %in% c(10, 20, 30))) {
     stop(paste0("N should be either 10, 20, or 30, not ", n))
   }
+  DoEAna = load(DoEAna)
   DoEAna[which((DoEAna$geometry == geometry) & (DoEAna$n == n) &
                  (DoEAna$distance == distance)), ]
 }
