@@ -32,11 +32,11 @@ plot_hypercube <- function(data_row) {
   colnames(design) <- c("X1", "X2")
   plot <- ggplot2::ggplot(design, ggplot2::aes(x = X1, y = X2)) +
     ggplot2::geom_point(size = 2, color = "blue") +
-    ggplot2::scale_y_continuous(limits = c(-1,1)) +
-    ggplot2::scale_x_continuous(limits = c(-1,1)) +
+    ggplot2::scale_y_continuous(limits = c(-1, 1)) +
+    ggplot2::scale_x_continuous(limits = c(-1, 1)) +
     ggplot2::labs(title = paste0(data_row$distance, " distance, n = ",
                                  data_row$n),
-         subtitle = paste0("min_dist score = ", round(data_row$score, 4)))+
+         subtitle = paste0("min_dist score = ", round(data_row$score, 4))) +
     ggplot2::theme(
            plot.title = ggplot2::element_text(size = 14, face = "bold",
                                               hjust = 0.5),
@@ -57,9 +57,9 @@ plot_simplex <- function(data_row) {
   lines <- data.frame(x1 = c(0.5, 0, 0.5),
                       x2 = c(0.5, 0.5, 0),
                       x3 = c(0, 0.5, 0.5),
-                      xend = c(1, 1, 1)/3,
-                      yend = c(1, 1, 1)/3,
-                      zend = c(1, 1, 1)/3)
+                      xend = c(1, 1, 1) / 3,
+                      yend = c(1, 1, 1) / 3,
+                      zend = c(1, 1, 1) / 3)
 
   suppressWarnings({plot <- ggtern::ggtern(design, ggplot2::aes(x = X1,
                                 y = X2, z = X3)) +
@@ -77,4 +77,3 @@ plot_simplex <- function(data_row) {
       plot.subtitle = ggplot2::element_text(hjust = 0.5)) })
   return(plot)
 }
-

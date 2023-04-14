@@ -35,7 +35,7 @@ min_dist <- function(X, dist_fx) {
 #' @return A value representing the distance
 #' @export
 euclidean_dist <- function(A, B) {
-  sum_dist = 0.0
+  sum_dist <- 0.0
   for (i in seq_along(A)) {
     sum_dist <- sum_dist + (A[i] - B[i]) ^ 2
   }
@@ -70,11 +70,10 @@ chebyshev_dist <- function(A, B) {
 # lp_norm function
 lp_norm <- function(A, B, p = 2) {
   sum_dist <- 0.0
-  dim = nrow(A)
+  dim <- nrow(A)
   for (i in seq_along(A)) {
     sum_dist <- sum_dist + abs((A[i] - B[i])) ^ p
   }
   dist <- sum_dist ^ (1 / p)
   return(dist)
 }
-

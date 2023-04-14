@@ -14,13 +14,16 @@
 #' @export
 relative_efficiency <- function(m_row, e_row, c_row) {
   if (m_row$distance != "manhattan") {
-    stop(paste0("Distance for m_df should be 'manhattan', not ", m_row$distance))
+    stop(paste0("Distance for m_df should be 'manhattan', not ",
+                m_row$distance))
   }
   if (e_row$distance != "euclidean") {
-    stop(paste0("Distance for e_df should be 'euclidean', not ", e_row$distance))
+    stop(paste0("Distance for e_df should be 'euclidean', not ",
+                e_row$distance))
   }
   if (c_row$distance != "chebyshev") {
-    stop(paste0("Distance for c_df should be 'chebyshev', not ", c_row$distance))
+    stop(paste0("Distance for c_df should be 'chebyshev', not ",
+                c_row$distance))
   }
 
   m_best <- parse_design_to_rmat(m_row)

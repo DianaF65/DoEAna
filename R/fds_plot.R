@@ -2,17 +2,17 @@
 #'
 #' @param dim the dimension of the grid. Accepts only values of 1 or 2.
 #' @return a randomized design with user specified number of parameters.
-make_random_grid <- function(dim = 1){
+make_random_grid <- function(dim = 1) {
   N <- 10000
   x1 <- runif(N, min = -1, max = 1)
-  if (dim == 1){
+  if (dim == 1) {
     ran_grid <- matrix(x1)
   }
-  if (dim == 2){
+  if (dim == 2) {
     x2 <- runif(N, min = -1, max = 1)
     ran_grid   <- cbind(x1, x2)
   }
-  if (dim == 3){
+  if (dim == 3) {
     x2 <- runif(N, min = -1, max = 1)
     x3 <- runif(N, min = -1, max = 1)
     ran_grid <- cbind(x1, x2, x3)
@@ -27,7 +27,7 @@ make_random_grid <- function(dim = 1){
 #'
 #' @param X a vector or matrix object that represents an experiment design
 #' @return a single vector
-makeModelVec <- function(X){
+makeModelVec <- function(X) {
   X <- matrix(X)
   K <- ncol(X)
   if (K == 1) {
@@ -75,12 +75,12 @@ makeModelMat <- function(X) {
 #'
 #' @param X candidate design being compared.
 #' @return a list of ordered prediction variance of the randomized designs.
-makePredVec <- function(X){
+makePredVec <- function(X) {
   M <- makeModelMat(X)
-  F_prime_F_inv <- solve(t(M)%*%M)
+  F_prime_F_inv <- solve(t(M) %*% M)
   rand_grid <- make_random_grid(dim = ncol(X)) # random grid, k = ncol(X) dims
-  ran_grid_model_vec <- lapply(row(rand_grid)[,1],
-                               function(x) makeModelVec(rand_grid[x,]))
+  ran_grid_model_vec <- lapply(row(rand_grid)[, 1],
+                               function(x) makeModelVec(rand_grid[x, ]))
   ran_grid_pred <- sapply(ran_grid_model_vec,
                           function(F_x) t(F_x) %*% F_prime_F_inv %*% (F_x))
   ord_grid_pred <- ran_grid_pred[order(ran_grid_pred)]
@@ -104,8 +104,8 @@ makePredVec <- function(X){
 #'
 #' @return an FDS plot.
 #' @export
-fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
-  if (design1$geometry == "simplex" | design2$geometry == "simplex"){
+fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = "") {
+  if (design1$geometry == "simplex" | design2$geometry == "simplex") {
     stop("Sorry, becuase the models for the simplex are very complex, the
          FDS plot for the simplex is currently not supported and is an
          area of future research.")
@@ -118,21 +118,21 @@ fds_plot <- function(design1, design2, Ylim = NULL, colV = colv, Main = ""){
   colv <- c("blue", "red", "purple", "orange", "darkgreen")
   par(tck = -0.01,
       mai = c(0.5, 0.5, 0.3, 0.3))
-  if(is.null(Ylim)) Ylim <- range(design)
-  x    <- seq(1,ncol(design), by = 1)/ncol(design)
-  plot(x = x, y = design[1,], type = "l", col = colV[1], ylim = Ylim,
+  if (is.null(Ylim)) Ylim <- range(design)
+  x    <- seq(1, ncol(design), by = 1) / ncol(design)
+  plot(x = x, y = design[1, ], type = "l", col = colV[1], ylim = Ylim,
        xlab = "", ylab = "", lwd = 2,
        axes = F, main = Main)
   grid()
-  for(i in 1:nrow(design)){
-    lines(x = x, y = design[i,], type = "l", col = colV[i], lwd = 2)
+  for (i in 1:nrow(design)){
+    lines(x = x, y = design[i, ], type = "l", col = colV[i], lwd = 2)
   }
   box()
-  axis(1, tck = -0.01, mgp = c(3, .1, 0), cex.axis= 1)
-  axis(2, tck = -0.01, mgp = c(3, 0.25, 0), cex.axis= 1)
+  axis(1, tck = -0.01, mgp = c(3, .1, 0), cex.axis = 1)
+  axis(2, tck = -0.01, mgp = c(3, 0.25, 0), cex.axis = 1)
   mtext("Fraction of Design Space", side = 1, line = 1, cex = 1)
   mtext("Relative Prediction Variance", side = 2, line = 1.5, cex = 1)
-  legend('topleft', inset = 0.1, legend = c(paste0(
+  legend("topleft, inset = 0.1, legend = c(paste0(
     design1$distance, " distance, N = ", design1$n), paste0(
       design2$distance, " distance, N = ", design2$n)), lty = 1, col = colV,
     cex = 0.65)
