@@ -2,8 +2,7 @@
 % Please edit documentation in R/fds_plot.R
 \name{makePredVec}
 \alias{makePredVec}
-\title{makePredVec creates a list of prediction variances of randomized designs for
-the fds_plot function.}
+\title{makePredVec Function}
 \usage{
 makePredVec(X)
 }

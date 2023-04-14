@@ -2,19 +2,15 @@
 % Please edit documentation in R/fds_plot.R
 \name{makeModelMat}
 \alias{makeModelMat}
-\title{makeModelMat takes an experiment's design matrix and extends it into the
-model matrix. The function creates a second order model which includes main
-effects, interaction, and squared terms.}
+\title{MakeModelMat Function}
 \usage{
 makeModelMat(X)
 }
 \arguments{
-\item{X}{yep}
+\item{X}{an experiment design in the form of a matrix.}
 }
 \value{
 a model matrix of the input design.
-
-something
 }
 \description{
 makeModelMat takes an experiment's design matrix and extends it into the
