@@ -1,12 +1,17 @@
 Package: DoEAna
-Title: What the Package Does (One Line, Title Case)
+Title: Design of Experiments Analysis 
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Rebekah", "Scott", , "rebekah.scott@usu.edu", role = c("aut", "cre")))
+    person("Ryan", "Bushman", , "ryan.bushman@usu.edu", role = c("aut"),
+           comment = c(ORCID = "orcid.org/0000-0001-9278-2000"))
+    person("Diana", "Felipe", , "diana.felipe@usu.edu", role = c("aut"))
+    person("Asher", "Hanson", , "a02213550@usu.edu", role = c("aut"))
+Description: Aids in the comparison of maxmin space-filling designs generated
+    using particle swarm optimization in Julia. Comparison tools include printing
+    the design matrix, plotting the design, relative efficiency tables, and a 
+    Fraction of Design Space plot. 
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
