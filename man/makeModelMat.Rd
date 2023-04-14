@@ -11,6 +11,11 @@ makeModelMat(X)
 }
 \value{
 a model matrix of the input design.
+<<<<<<< HEAD
+=======
+
+model matrix
+>>>>>>> 4d5c53ca46c126fca364d0e3b3a36d37ef8e1e87
 }
 \description{
 makeModelMat takes an experiment's design matrix and extends it into the
