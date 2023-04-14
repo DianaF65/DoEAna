@@ -1,0 +1,99 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# DoEAna
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of DoEAna is to visualize the results of research regarding 
+space-filling experimental designs. The package has a prepared data set
+"DoEAna.rda" with designs for comparison. In the dataset, you can see how
+designs were generated on two different geometries: hypercube and simplex. They
+also differ by the distance measure used: Manhattan, Chebyshev, and Euclidean. 
+Finally, they differ by the number of design points: 10, 20, and 30. The user 
+can use this package to compare how these different experiment features affect
+a designs performance.
+
+
+
+## Installation
+
+You can install the development version of DoEAna from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("DianaF65/DoEAna")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(DoEAna)
+
+# select designs on the hypercube or simplex
+my_design_hyper <- select_design(geometry = "hypercube", distance = "chebyshev", n = 20)
+my_design_sim <- select_design(geometry = "simplex", distance = "chebyshev", n = 20)
+
+# show the design matrices
+print_design(my_design_hyper)
+print_design(my_design_sim)
+
+# plot the designs
+par(mfrow = c(1, 2))
+plot_design(my_design_hyper)
+plot_design(my_design_sim)
+
+```
+
+```{r}
+# compare across different distance measures with relative efficiency on the 
+# hypercube
+my_designM_H <- select_design(geometry = "hypercube",
+                            distance = "manhattan", n = 20)
+my_designE_H <- select_design(geometry = "hypercube",
+                            distance = "euclidean", n = 20)
+my_designC_H <- select_design(geometry = "hypercube",
+                            distance = "chebyshev", n = 20)
+
+relative_efficiency(m_row = my_designM_H, e_row = my_designE_H, 
+                    c_row = my_designC_H)
+```
+
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+# compare across different distance measures with relative efficiency on the 
+# simplex
+my_designM_S <- select_design(geometry = "simplex",
+                            distance = "manhattan", n = 20)
+my_designE_S <- select_design(geometry = "simplex",
+                            distance = "euclidean", n = 20)
+my_designC_S <- select_design(geometry = "simplex",
+                            distance = "chebyshev", n = 20)
+
+relative_efficiency(m_row = my_designM_S, e_row = my_designE_S, 
+                    c_row = my_designC_S)
+```
+
+```{r}
+# Compare relative prediction variance across designs using FDS plots
+fds_plot(design1 = my_designC_H, design2 = my_designM_H, 
+         Main = "Chebychev vs Manahattan Distance for n=20")
+```
+

@@ -2,10 +2,7 @@
 % Please edit documentation in R/fds_plot.R
 \name{fds_plot}
 \alias{fds_plot}
-\title{fds_plot takes two experiment designs and creates a Fraction of Design Space
-visualization that compares relative prediction variance across the design
-space. A lower prediction variance is considered a a desirable quality in an
-experiment.}
+\title{FDS Plot}
 \usage{
 fds_plot(design1, design2, Ylim = NULL, colV = colv, Main = "")
 }

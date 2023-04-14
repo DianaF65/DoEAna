@@ -12,8 +12,6 @@ makeModelVec(X)
 }
 \value{
 a single vector
-
-something
 }
 \description{
 makeModelVec generates a single vector of the design matrix for computation

@@ -14,7 +14,7 @@ makeModelMat(X)
 \value{
 a model matrix of the input design.
 
-something
+model matrix
 }
 \description{
 makeModelMat takes an experiment's design matrix and extends it into the
