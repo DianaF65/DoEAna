@@ -4,19 +4,19 @@
 \alias{fds_plot}
 \title{FDS Plot}
 \usage{
-fds_plot(design1, design2, Ylim = NULL, colV = colv, Main = "")
+fds_plot(design1, design2, y_lim = NULL, col_v = col_v, title = "")
 }
 \arguments{
 \item{design1}{an experimental design for comparison.}
 
 \item{design2}{an experimental design for comparison.}
 
-\item{Ylim}{ignore.}
+\item{y_lim}{ignore.}
 
-\item{colV}{a vector of strings containing a number of colors equal to the
+\item{col_v}{a vector of strings containing a number of colors equal to the
 number of designs being plotted.}
 
-\item{Main}{a string containing the desired title for the FDS plot.}
+\item{title}{a string containing the desired title for the FDS plot.}
 }
 \value{
 an FDS plot.

@@ -4,12 +4,12 @@
 \alias{chebyshev_dist}
 \title{Chebyshev function}
 \usage{
-chebyshev_dist(A, B)
+chebyshev_dist(a, b)
 }
 \arguments{
-\item{A}{A vector}
+\item{a}{A vector}
 
-\item{B}{A vector}
+\item{b}{A vector}
 }
 \value{
 A value which is the distance

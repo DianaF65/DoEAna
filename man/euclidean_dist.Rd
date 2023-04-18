@@ -4,12 +4,12 @@
 \alias{euclidean_dist}
 \title{Euclidean Distance}
 \usage{
-euclidean_dist(A, B)
+euclidean_dist(a, b)
 }
 \arguments{
-\item{A}{A vector}
+\item{a}{A vector}
 
-\item{B}{A vector}
+\item{b}{A vector}
 }
 \value{
 A value representing the distance

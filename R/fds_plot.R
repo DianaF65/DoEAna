@@ -48,7 +48,7 @@ make_model_vec <- function(x) {
 #' model matrix. The function creates a second order model which includes main
 #' effects, interaction, and squared terms.
 #'
-#' @param X an experiment design in the form of a matrix.
+#' @param x an experiment design in the form of a matrix.
 #'
 #' @return a model matrix of the input design.
 make_model_mat <- function(x) {
