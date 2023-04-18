@@ -6,6 +6,8 @@
 # -make rel_eff_table (gives table of relative efficiency)
 # -fds_plot (you input diff designs and it gives the resulting fds plot)
 
+data("DoEAna")
+
 # select a design (hypercube)
 my_design_hyper <- select_design(geometry = "hypercube", distance = "chebyshev", n = 30)
 

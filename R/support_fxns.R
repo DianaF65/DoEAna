@@ -16,12 +16,12 @@ parse_design_to_rmat <- function(design_row) {
   nc <- nchar(t1)
   t1 <- substr(t1, start = 2, stop = nc - 1)
   ot <- strsplit(t1, split = c(";"))[[1]]
-  MM <- matrix(NA, nrow = n, ncol = k)
-  for (i in 1:length(ot)){
+  mm <- matrix(NA, nrow = n, ncol = k)
+  for (i in seq_along(ot)){
     ttt     <- ot[i]
     spt     <- as.numeric(strsplit(ttt, split = " ")[[1]])
     spt2    <- spt[!is.na(spt)]
-    MM[i, ] <- spt2
+    mm[i, ] <- spt2
   }
-  return(design = round(MM, 6))
+  return(design = round(mm, 6))
 }
