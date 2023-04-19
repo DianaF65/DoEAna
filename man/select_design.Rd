@@ -4,9 +4,11 @@
 \alias{select_design}
 \title{Select Design Function}
 \usage{
-select_design(geometry, distance, n)
+select_design(d_data, geometry, distance, n)
 }
 \arguments{
+\item{d_data}{data.frame that will be subsetted to a certian row.}
+
 \item{geometry}{Geometry of the design space, either 'simplex' or
 'hypercube'}
 

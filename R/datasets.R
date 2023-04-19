@@ -6,7 +6,7 @@
 #' distance metrics: Manhattan, Euclidean, and Chebyshev.
 #'
 #'
-#' @format ## `DoEAna`
+#' @format ## `sf_designs`
 #' A data frame with 18 rows and 6 columns:
 #' \describe{
 #'   \item{score}{Minimum distance between points on the design
@@ -21,4 +21,4 @@
 #' }
 #' @source Particle Swarm Optimization searches run by Rebekah Scott for
 #' undergraduate research at Utah State University.
-"DoEAna"
+"sf_designs"

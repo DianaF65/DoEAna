@@ -27,10 +27,9 @@
 #'
 #' @return A plot of the hypercube.
 plot_hypercube <- function(data_row) {
-  # ggplot2 example code
   design <- as.data.frame(parse_design_to_rmat(data_row))
   x1 <- x2 <- 0
-  colnames(design) <- c("X1", "X2")
+  colnames(design) <- c("x1", "x2")
 
   plot <- ggplot2::ggplot(design, ggplot2::aes(x = x1, y = x2)) +
     ggplot2::geom_point(size = 2, color = "blue") +
@@ -56,7 +55,7 @@ plot_hypercube <- function(data_row) {
 plot_simplex <- function(data_row) {
   design <- as.data.frame(parse_design_to_rmat(data_row))
   x1 <- x2 <- x2 <- x3 <- xend <- yend <- zend <- 0
-  colnames(design) <- c("X1", "X2", "X3")
+  colnames(design) <- c("x1", "x2", "x3")
   lines <- data.frame(x1 = c(0.5, 0, 0.5),
                       x2 = c(0.5, 0.5, 0),
                       x3 = c(0, 0.5, 0.5),

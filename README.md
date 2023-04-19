@@ -4,6 +4,8 @@
 # DoEAna
 
 <!-- badges: start -->
+
+<img src  = "vignettes/badge.png" align = "right" height = "135" />
 <!-- badges: end -->
 
 The goal of DoEAna is to visualize the results of research regarding
@@ -25,16 +27,19 @@ You can install the development version of DoEAna from
 devtools::install_github("DianaF65/DoEAna")
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to use this package:
+
+First, select optimal space-filling designs. You can view the design
+matrix and plot them.
 
 ``` r
 library(DoEAna)
 
 # select designs on the hypercube or simplex
-my_design_hyper <- select_design(geometry = "hypercube", distance = "chebyshev", n = 20)
-my_design_sim <- select_design(geometry = "simplex", distance = "chebyshev", n = 20)
+my_design_hyper <- select_design(d_data = sf_designs, geometry = "hypercube", distance = "chebyshev", n = 20)
+my_design_sim <- select_design(d_data = sf_designs, geometry = "simplex", distance = "chebyshev", n = 20)
 
 # show the design matrices
 print_design(my_design_hyper)
@@ -100,14 +105,16 @@ plot_design(my_design_sim)
 
 <img src="man/figures/README-example-2.png" width="100%" />
 
+Investigate their relative efficiency.
+
 ``` r
 # compare across different distance measures with relative efficiency on the 
 # hypercube
-my_designM_H <- select_design(geometry = "hypercube",
+my_designM_H <- select_design(d_data = sf_designs, geometry = "hypercube",
                             distance = "manhattan", n = 20)
-my_designE_H <- select_design(geometry = "hypercube",
+my_designE_H <- select_design(d_data = sf_designs, geometry = "hypercube",
                             distance = "euclidean", n = 20)
-my_designC_H <- select_design(geometry = "hypercube",
+my_designC_H <- select_design(d_data = sf_designs, geometry = "hypercube",
                             distance = "chebyshev", n = 20)
 
 relative_efficiency(m_row = my_designM_H, e_row = my_designE_H, 
@@ -118,17 +125,14 @@ relative_efficiency(m_row = my_designM_H, e_row = my_designE_H,
 #> C(x)  69.923  76.814 100.000
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
 ``` r
 # compare across different distance measures with relative efficiency on the 
 # simplex
-my_designM_S <- select_design(geometry = "simplex",
+my_designM_S <- select_design(d_data = sf_designs, geometry = "simplex",
                             distance = "manhattan", n = 20)
-my_designE_S <- select_design(geometry = "simplex",
+my_designE_S <- select_design(d_data = sf_designs, geometry = "simplex",
                             distance = "euclidean", n = 20)
-my_designC_S <- select_design(geometry = "simplex",
+my_designC_S <- select_design(d_data = sf_designs, geometry = "simplex",
                             distance = "chebyshev", n = 20)
 
 relative_efficiency(m_row = my_designM_S, e_row = my_designE_S, 
@@ -139,10 +143,12 @@ relative_efficiency(m_row = my_designM_S, e_row = my_designE_S,
 #> C(x) 100.628  99.285 100.000
 ```
 
+Or view an FDS plot
+
 ``` r
 # Compare relative prediction variance across designs using FDS plots
 fds_plot(design1 = my_designC_H, design2 = my_designM_H, 
-         Main = "Chebychev vs Manahattan Distance for n=20")
+         title = "Chebychev vs Manahattan Distance for n=20")
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
