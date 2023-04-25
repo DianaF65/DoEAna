@@ -14,6 +14,10 @@ simplex. They also differ by the distance measure used: Manhattan,
 Chebyshev, and Euclidean. Finally, they differ by the number of design
 points: 10, 20, and 30. The user can use this package to compare how
 these different experiment features affect a designs performance.
+Although the main purpose of this package is to display specific results
+of a research project, these functions can be used by any individual
+that formats their data in the same way as DoEAna.rda in the package
+data folder.
 
 ## Installation
 
