@@ -4,10 +4,10 @@
 \alias{min_dist}
 \title{Minimum Distance Function}
 \usage{
-min_dist(X, dist_fx)
+min_dist(x, dist_fx)
 }
 \arguments{
-\item{X}{The matrix for which the minimum distance between all rows will
+\item{x}{The matrix for which the minimum distance between all rows will
 be found}
 
 \item{dist_fx}{The distance between two rows of a matrix (check this)}
