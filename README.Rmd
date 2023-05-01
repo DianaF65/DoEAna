@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 <img src  = "vignettes/badge.png" align = "right" height = "135" />
+[![R-CMD-check](https://github.com/DianaF65/DoEAna/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DianaF65/DoEAna/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of DoEAna is to visualize the results of research regarding 
