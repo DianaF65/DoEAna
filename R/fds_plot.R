@@ -22,8 +22,8 @@ make_random_grid <- function(dim = 1) {
 
 #' make_model_vec Function
 #'
-#' makeModelVec generates a single vector of the design matrix for computation
-#' purposes in makePredVec.
+#' make_model_vec generates a single vector of the design matrix for computation
+#' purposes in make_pred_vec
 #'
 #' @param x a vector or matrix object that represents an experiment design
 #' @return a single vector
