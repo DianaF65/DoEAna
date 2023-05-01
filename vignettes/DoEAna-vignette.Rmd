@@ -1,6 +1,6 @@
 ---
 title: "DoEAna-vignette"
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 description: >
   Start here if this is your first time using DoEAna. You'll learn why we made 
   this package and all the analysis functions in it. 
